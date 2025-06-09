@@ -1,32 +1,19 @@
-name: Close Production Pull Request
+name: Validate Production Pull Request
 
-# only trigger on pull request closed events
 on:
   pull_request:
-    types: [closed]
     branches:
-      - main
+      - master
     paths:
       - 'force-app/**'
 jobs:
-  merge_job:
-    # this job will only run if the PR has been merged
-    if: github.event.pull_request.merged == true
+  validate:
     runs-on: ubuntu-latest
     environment: SFDX_PROD
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy on ${{ vars.ENVIRONMENT_NAME }}
+      - name: Validate on ${{ vars.ENVIRONMENT_NAME }}
         uses: jawills/sf-deploy@v1.0
         with:
-          SFDX_AUTH_URL`: ${{ secrets.SFDX_AUTH_URL }}
-          DRY_RUN: false
-          TEST_LEVEL: NoTestRun
-
-  close_job:
-    # this job will only run if the PR has been closed without being merged
-    if: github.event.pull_request.merged == false
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo PR #${{ github.event.number }} has been closed without being merge
+          SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
+          DRY_RUN: true
