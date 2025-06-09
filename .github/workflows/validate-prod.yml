@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - release-v1.0.0
+      - main
     paths:
       - 'force-app/**'
 jobs:
