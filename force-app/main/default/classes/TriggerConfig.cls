@@ -10,9 +10,10 @@ public with sharing class TriggerConfig {
     }
 
     public void runAll(SObjectType objectType){
-        String objectName = objectType.getDescribe().getName();
-
-        shouldRun(prepareFieldName(objectName));
+        String objectName = objectType.getDescribe().getName(); 
+        if(shouldRun(prepareFieldName(objectName))){
+            
+        }
     }
 
     private Boolean shouldRun(String triggerObjectName){
