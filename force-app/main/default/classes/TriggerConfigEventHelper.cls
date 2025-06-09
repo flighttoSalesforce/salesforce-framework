@@ -1,4 +1,4 @@
-public with sharing class TriggerConfigEventHelper {
+public class TriggerConfigEventHelper {
 
     @testVisible
     private System.TriggerOperation operation;
