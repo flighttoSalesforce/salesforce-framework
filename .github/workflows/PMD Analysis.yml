@@ -1,4 +1,9 @@
-- name: PMD Analysis
+name: PMD Analysis
+on:
+  pull_request:
+    branches:
+      - release-v1.0.0
+      - main
   # You may pin to the exact commit or the version.
   # uses: pmd/pmd-github-action@d9c1f3c5940cbf5923f1354e83fa858b4496ebaa
   uses: pmd/pmd-github-action@v2.0.0
