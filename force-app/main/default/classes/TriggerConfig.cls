@@ -1,5 +1,6 @@
 public with sharing class TriggerConfig {
     public TriggerConfig() {}
+    
     private static TriggerConfig instance;
     public static TriggerConfig getInstance(){
         if(instance == null){
